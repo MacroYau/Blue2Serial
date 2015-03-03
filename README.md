@@ -16,6 +16,11 @@ dependencies {
 
 Read the sample Bluetooth terminal app [source code](https://github.com/MacroYau/Blue2Serial/blob/master/app/src/main/java/com/macroyau/blue2serial/demo/TerminalActivity.java) to get started!
 
+Don't forget to declare the Bluetooth permission in your app's `AndroidManifest.xml`.
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH" />
+```
+
 ## Credits
 
 Credit to Aidan Follestad's [Material Dialogs](https://github.com/afollestad/material-dialogs) library.
