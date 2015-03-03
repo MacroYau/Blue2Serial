@@ -17,7 +17,7 @@
             android:id="@+id/et_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter command here..."
+            android:hint="@string/command_hint"
             android:imeOptions="actionSend"
             android:inputType="text"
             android:background="@null"
