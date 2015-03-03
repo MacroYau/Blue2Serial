@@ -5,6 +5,7 @@ A simple Android library for implementing Bluetooth Serial Port Profile (SPP) co
 ## Download
 
 Blue2Serial is available on the jCenter repository. If you are using Android Studio, you can simply add a dependency on your app module's `build.gradle` file to import this library.
+
 ```Gradle
 dependencies {
     compile 'com.macroyau:blue2serial:0.1.0'
@@ -13,7 +14,7 @@ dependencies {
 
 ## Usage
 
-Read the sample Bluetooth termianl app [source code](https://github.com/MacroYau/Blue2Serial/blob/master/app/src/main/java/com/macroyau/blue2serial/demo/TerminalActivity.java) to get started!
+Read the sample Bluetooth terminal app [source code](https://github.com/MacroYau/Blue2Serial/blob/master/app/src/main/java/com/macroyau/blue2serial/demo/TerminalActivity.java) to get started!
 
 ## Credits
 
