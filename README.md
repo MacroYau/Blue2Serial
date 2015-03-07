@@ -1,5 +1,7 @@
 # Blue2Serial
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Blue2Serial-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1623)
+
 A simple Android library for implementing Bluetooth Serial Port Profile (SPP) communication.
 
 ## Download
