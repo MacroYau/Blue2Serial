@@ -10,7 +10,17 @@ Blue2Serial is available on the jCenter repository. If you are using Android Stu
 
 ```Gradle
 dependencies {
-    compile 'com.macroyau:blue2serial:0.1.0'
+    compile 'com.macroyau:blue2serial:0.1.1'
+}
+```
+
+Please add the following lines to the `build.gradle` file if Android Studio fails to resolve the jCenter repository.
+
+```Gradle
+repositories {
+    maven {
+        url "http://dl.bintray.com/macroyau/maven"
+    }
 }
 ```
 

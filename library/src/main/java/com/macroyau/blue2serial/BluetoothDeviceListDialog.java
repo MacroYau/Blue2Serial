@@ -121,7 +121,7 @@ public class BluetoothDeviceListDialog {
     public void show() {
         final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
                 .title(mTitle)
-                .adapter(new BluetoothDeviceListItemAdapter(mContext, mNames, mAddresses, mShowAddress))
+                .adapter(new BluetoothDeviceListItemAdapter(mContext, mNames, mAddresses, mShowAddress), null)
                 .theme(mUseDarkTheme ? Theme.DARK : Theme.LIGHT)
                 .build();
 
