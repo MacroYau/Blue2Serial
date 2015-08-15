@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +25,7 @@ import com.macroyau.blue2serial.BluetoothSerialListener;
  *
  * @author Macro Yau
  */
-public class TerminalActivity extends ActionBarActivity
+public class TerminalActivity extends AppCompatActivity
         implements BluetoothSerialListener, BluetoothDeviceListDialog.OnDeviceSelectedListener {
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
@@ -121,7 +121,7 @@ public class TerminalActivity extends ActionBarActivity
             bluetoothSerial.stop();
             return true;
         } else if (id == R.id.action_crlf) {
-            crlf = item.isChecked();
+            crlf = !item.isChecked();
             item.setChecked(crlf);
             return true;
         }
@@ -183,7 +183,10 @@ public class TerminalActivity extends ActionBarActivity
                 subtitle = getString(R.string.status_disconnected);
                 break;
         }
-        getSupportActionBar().setSubtitle(subtitle);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setSubtitle(subtitle);
+        }
     }
 
     private void showDeviceListDialog() {
