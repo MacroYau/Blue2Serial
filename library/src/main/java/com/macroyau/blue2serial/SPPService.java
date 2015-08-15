@@ -205,7 +205,8 @@ public class SPPService {
             while (true) {
                 try {
                     bytes = mInputStream.read(data);
-                    mHandler.obtainMessage(BluetoothSerial.MESSAGE_READ, bytes, -1, data).sendToTarget();
+                    String read = new String(data, 0, bytes);
+                    mHandler.obtainMessage(BluetoothSerial.MESSAGE_READ, bytes, -1, read.getBytes()).sendToTarget();
                 } catch (IOException e) {
                     reconnect(); // Connection lost
                     SPPService.this.start();
