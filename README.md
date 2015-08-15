@@ -10,7 +10,7 @@ Blue2Serial is available on the jCenter repository. If you are using Android Stu
 
 ```Gradle
 dependencies {
-    compile 'com.macroyau:blue2serial:0.1.1'
+    compile 'com.macroyau:blue2serial:0.1.2'
 }
 ```
 
