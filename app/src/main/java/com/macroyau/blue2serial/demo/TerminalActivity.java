@@ -80,7 +80,7 @@ public class TerminalActivity extends AppCompatActivity
         super.onResume();
 
         // Open a Bluetooth serial port and get ready to establish a connection
-        if (bluetoothSerial.isBluetoothEnabled()) {
+        if (bluetoothSerial.checkBluetooth() && bluetoothSerial.isBluetoothEnabled()) {
             if (!bluetoothSerial.isConnected()) {
                 bluetoothSerial.start();
             }
