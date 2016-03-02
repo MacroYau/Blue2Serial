@@ -10,7 +10,7 @@ Blue2Serial is available on the jCenter repository. If you are using Android Stu
 
 ```Gradle
 dependencies {
-    compile 'com.macroyau:blue2serial:0.1.2'
+    compile 'com.macroyau:blue2serial:0.1.3'
 }
 ```
 
@@ -33,16 +33,12 @@ Don't forget to declare the Bluetooth permission in your app's `AndroidManifest.
 <uses-permission android:name="android.permission.BLUETOOTH" />
 ```
 
-## Credits
-
-Credit to Aidan Follestad's [Material Dialogs](https://github.com/afollestad/material-dialogs) library.
-
 ## License
 
 ```
 The MIT License (MIT)
 
-Copyright (c) 2015 Macro Yau
+Copyright (c) 2016 Macro Yau
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
