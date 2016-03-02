@@ -2,18 +2,15 @@ package com.macroyau.blue2serial;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 
 import java.util.Set;
 
 /**
  * Dialog for selecting a remote Bluetooth device themed with the Material Design style.
- * Credit to Aidan Follestad's Material Dialogs library (https://github.com/afollestad/material-dialogs).
  *
  * @author Macro Yau
  */
@@ -22,7 +19,7 @@ public class BluetoothDeviceListDialog {
     /**
      * Listener for the {@link com.macroyau.blue2serial.BluetoothDeviceListDialog}.
      */
-    public static interface OnDeviceSelectedListener {
+    public interface OnDeviceSelectedListener {
 
         /**
          * A remote Bluetooth device is selected from the dialog.
@@ -109,8 +106,10 @@ public class BluetoothDeviceListDialog {
     /**
      * Force to use the dark version of Material theme on the dialog.
      *
+     * @deprecated As of version 0.1.3, the library uses the AppCompat AlertDialog. Styling of the dialog should be done in styles.xml.
      * @param useDarkTheme Set to true to use the dark theme.
      */
+    @Deprecated
     public void useDarkTheme(boolean useDarkTheme) {
         mUseDarkTheme = useDarkTheme;
     }
@@ -119,11 +118,10 @@ public class BluetoothDeviceListDialog {
      * Show the dialog. This must be called after setting the dialog's listener, title and devices.
      */
     public void show() {
-        final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                .title(mTitle)
-                .adapter(new BluetoothDeviceListItemAdapter(mContext, mNames, mAddresses, mShowAddress), null)
-                .theme(mUseDarkTheme ? Theme.DARK : Theme.LIGHT)
-                .build();
+        final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                .setTitle(mTitle)
+                .setAdapter(new BluetoothDeviceListItemAdapter(mContext, mNames, mAddresses, mShowAddress), null)
+                .create();
 
         final ListView listView = dialog.getListView();
         if (listView != null) {

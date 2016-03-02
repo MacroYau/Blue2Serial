@@ -3,8 +3,10 @@ package com.macroyau.blue2serial.demo;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -14,8 +16,6 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.macroyau.blue2serial.BluetoothDeviceListDialog;
 import com.macroyau.blue2serial.BluetoothSerial;
 import com.macroyau.blue2serial.BluetoothSerialListener;
@@ -196,7 +196,6 @@ public class TerminalActivity extends AppCompatActivity
         dialog.setTitle(R.string.paired_devices);
         dialog.setDevices(bluetoothSerial.getPairedDevices());
         dialog.showAddress(true);
-        dialog.useDarkTheme(true);
         dialog.show();
     }
 
@@ -204,18 +203,15 @@ public class TerminalActivity extends AppCompatActivity
 
     @Override
     public void onBluetoothNotSupported() {
-        new MaterialDialog.Builder(this)
-                .content(R.string.no_bluetooth)
-                .positiveText(R.string.action_quit)
-                .callback(new MaterialDialog.ButtonCallback() {
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.no_bluetooth)
+                .setPositiveButton(R.string.action_quit, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onPositive(MaterialDialog dialog) {
-                        super.onPositive(dialog);
+                    public void onClick(DialogInterface dialog, int which) {
                         finish();
                     }
                 })
-                .cancelable(false)
-                .theme(Theme.DARK)
+                .setCancelable(false)
                 .show();
     }
 
