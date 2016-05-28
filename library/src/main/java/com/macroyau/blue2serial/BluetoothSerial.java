@@ -42,6 +42,8 @@ public class BluetoothSerial {
 
     private String mConnectedDeviceName, mConnectedDeviceAddress;
 
+    private boolean isRaw;
+
     /**
      * Constructor.
      * @param context The {@link android.content.Context} to use.
@@ -50,6 +52,7 @@ public class BluetoothSerial {
     public BluetoothSerial(Context context, BluetoothSerialListener listener) {
         mAdapter = getAdapter(context);
         mListener = listener;
+        isRaw = mListener instanceof BluetoothSerialRawListener;
     }
 
     public static BluetoothAdapter getAdapter(Context context) {
@@ -304,11 +307,17 @@ public class BluetoothSerial {
                     byte[] bufferWrite = (byte[]) msg.obj;
                     String messageWrite = new String(bufferWrite);
                     mListener.onBluetoothSerialWrite(messageWrite);
+                    if (isRaw) {
+                        ((BluetoothSerialRawListener) mListener).onBluetoothSerialWriteRaw(bufferWrite);
+                    }
                     break;
                 case MESSAGE_READ:
                     byte[] bufferRead = (byte[]) msg.obj;
                     String messageRead = new String(bufferRead);
                     mListener.onBluetoothSerialRead(messageRead);
+                    if (isRaw) {
+                        ((BluetoothSerialRawListener) mListener).onBluetoothSerialReadRaw(bufferRead);
+                    }
                     break;
                 case MESSAGE_DEVICE_INFO:
                     mConnectedDeviceName = msg.getData().getString(KEY_DEVICE_NAME);
