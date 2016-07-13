@@ -8,8 +8,8 @@ android {
         applicationId "com.macroyau.blue2serial.demo"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 4
-        versionName "1.4"
+        versionCode 5
+        versionName "1.5"
         generatedDensities = []
     }
 

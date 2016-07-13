@@ -200,13 +200,14 @@ public class SPPService {
 
         public void run() {
             byte[] data = new byte[1024];
-            int bytes;
+            int length;
 
             while (true) {
                 try {
-                    bytes = mInputStream.read(data);
-                    String read = new String(data, 0, bytes);
-                    mHandler.obtainMessage(BluetoothSerial.MESSAGE_READ, bytes, -1, read.getBytes()).sendToTarget();
+                    length = mInputStream.read(data);
+                    byte[] read = new byte[length];
+                    System.arraycopy(data, 0, read, 0, length);
+                    mHandler.obtainMessage(BluetoothSerial.MESSAGE_READ, length, -1, read).sendToTarget();
                 } catch (IOException e) {
                     reconnect(); // Connection lost
                     SPPService.this.start();
